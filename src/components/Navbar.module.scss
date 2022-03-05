@@ -1,0 +1,41 @@
+nav {
+  border-bottom: 2px black solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.5rem;
+  padding: 0 3rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .close {
+      position: inherit;
+      top: 1rem;
+      right: 3rem;
+    }
+
+    ul {
+      position: inherit;
+      top: 1rem;
+      left: 50%;
+      transform: translate(-50%);
+
+      li {
+        list-style: none;
+        padding-bottom: 2.5rem;
+        text-align: center;
+
+        a {
+          font-size: 3.2rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

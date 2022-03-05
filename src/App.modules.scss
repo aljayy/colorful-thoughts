@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Coolvetica;
+  src: url("./fonts/coolveticarg.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Coolvetica";
+}
+
+body {
+  height: 1200px;
+}
