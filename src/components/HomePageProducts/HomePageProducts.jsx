@@ -19,16 +19,17 @@ function HomePageProducts(props) {
               {productItem.products[0].map((individualProduct) => {
                 return (
                   <div className={styles["product-container"]}>
-                    <p className={styles["product-name"]}>
-                      {individualProduct.productName}
-                    </p>
                     <div>
                       <img src={individualProduct.productImage} />
                     </div>
-
-                    <p
-                      className={styles["product-price"]}
-                    >{`$${individualProduct.productPrice}`}</p>
+                    <div className={styles["product-details"]}>
+                      <p className={styles["product-name"]}>
+                        {individualProduct.productName}
+                      </p>
+                      <p className={styles["product-price"]}>
+                        {`$${individualProduct.productPrice}`}
+                      </p>
+                    </div>
                   </div>
                 );
               })}
