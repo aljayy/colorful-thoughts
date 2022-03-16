@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import HomePageProducts from "./components/HomePageProducts/HomePageProducts";
 import styles from "./App.module.scss";
 import { commerce } from "./lib/commerce";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -50,6 +51,7 @@ function App() {
       <Navbar />
       <Hero />
       <HomePageProducts products={homeProducts} />
+      <Footer />
     </div>
   );
 }
