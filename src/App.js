@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import HomePageProducts from "./components/HomePageProducts/HomePageProducts";
@@ -46,11 +47,16 @@ function App() {
   useEffect(() => {
     getCategories();
   }, []);
+
   return (
     <div>
       <Navbar />
-      <Hero />
-      <HomePageProducts products={homeProducts} />
+      <Routes>
+        <Route
+          path="/home"
+          element={[<Hero />, <HomePageProducts products={homeProducts} />]}
+        />
+      </Routes>
       <Footer />
     </div>
   );
