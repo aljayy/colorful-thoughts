@@ -1,0 +1,54 @@
+.section {
+  margin-top: 6.5rem;
+}
+
+.hero-container {
+  height: 10rem;
+  width: 100%;
+  border-bottom: 1px solid black;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.product-page-container {
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 22rem);
+  margin: 2rem 3rem;
+  row-gap: 1rem;
+
+  .product-container {
+    border: 1px #eeee solid;
+
+    .image-container {
+      height: 16rem;
+      width: 100%;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+
+    .product-details {
+      border-top: 1px solid #c0c0c0;
+      display: flex;
+      flex-direction: row;
+      font-family: "Libre Baskerville";
+      height: 6rem;
+      padding: 0.5rem 1rem;
+
+      .product-price {
+        align-self: flex-end;
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
