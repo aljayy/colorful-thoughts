@@ -10,6 +10,9 @@ import twitter from "../../images/twittersocial.svg";
 import tiktok from "../../images/tiktoksocial.svg";
 
 function Footer() {
+  function preventReload(e) {
+    e.preventDefault();
+  }
   return (
     <footer>
       <img
@@ -49,7 +52,7 @@ function Footer() {
         </div>
       </div>
       <p>Be among the first to get the word on new drops.</p>
-      <form>
+      <form onClick={preventReload}>
         <input />
         <button>Subscribe</button>
       </form>

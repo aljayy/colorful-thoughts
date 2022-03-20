@@ -6,6 +6,7 @@ import HomePageProducts from "./components/HomePageProducts/HomePageProducts";
 import styles from "./App.module.scss";
 import { commerce } from "./lib/commerce";
 import Footer from "./components/Footer/Footer";
+import DesignerCategory from "./components/DesignerCategory/DesignerCategory";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -36,6 +37,7 @@ function App() {
       );
 
       categoryArr.push({
+        categorySlug: categoryData[i].slug,
         id: categoryData[i].id,
         heroImg: categoryData[i].assets[0].url,
         products: productData,
@@ -43,6 +45,7 @@ function App() {
     }
     setHomeProducts(categoryArr);
   }
+  console.log(homeProducts);
 
   useEffect(() => {
     getCategories();
@@ -56,6 +59,7 @@ function App() {
           path="/home"
           element={[<Hero />, <HomePageProducts products={homeProducts} />]}
         />
+        <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
       </Routes>
       <Footer />
     </div>

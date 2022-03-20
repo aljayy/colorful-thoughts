@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./HomePageProducts.module.scss";
 
 function HomePageProducts(props) {
@@ -34,7 +35,12 @@ function HomePageProducts(props) {
                 );
               })}
             </div>
-            <button>View More</button>
+            <Link
+              to={`/designers/${productItem.categorySlug}`}
+              style={{ textDecoration: "none" }}
+            >
+              <button className={styles.view}>View More</button>
+            </Link>
           </div>
         );
       })}

@@ -35,7 +35,6 @@
     }
 
     .product-details {
-      // border-top: 1px solid black;
       border-top: 1px solid #c0c0c0;
       display: flex;
       flex-direction: row;
@@ -52,7 +51,7 @@
   }
 }
 
-button {
+.view {
   background-color: #ff6700;
   border: none;
   color: white;
