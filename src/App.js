@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero";
 import HomePageProducts from "./components/HomePageProducts/HomePageProducts";
 import styles from "./App.module.scss";
 import { commerce } from "./lib/commerce";
 import Footer from "./components/Footer/Footer";
 import DesignerCategory from "./components/DesignerCategory/DesignerCategory";
+import About from "./components/About/About";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -45,7 +46,6 @@ function App() {
     }
     setHomeProducts(categoryArr);
   }
-  console.log(homeProducts);
 
   useEffect(() => {
     getCategories();
@@ -60,6 +60,7 @@ function App() {
           element={[<Hero />, <HomePageProducts products={homeProducts} />]}
         />
         <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
+        <Route path="/about/" element={<About />} />
       </Routes>
       <Footer />
     </div>
