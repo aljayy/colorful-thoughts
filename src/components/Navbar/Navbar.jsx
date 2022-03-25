@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 
 // Image Imports
@@ -16,7 +17,9 @@ function Navbar() {
 
   return (
     <nav>
-      <img src={logo} />
+      <Link to="/home">
+        <img src={logo} />
+      </Link>
       <button
         onClick={viewMenu}
         className={`${styles["mobile-menu"]} ${menu ? styles["open"] : ""}`}
@@ -25,7 +28,7 @@ function Navbar() {
         <div className={styles["bar-two"]} />
         <div className={styles["bar-three"]} />
       </button>
-      <MobileMenu open={menu} />
+      <MobileMenu open={menu} viewMenuHandler={viewMenu} />
     </nav>
   );
 }

@@ -11,6 +11,7 @@ function MobileMenu(props) {
             to="/about"
             style={{ textDecoration: "none" }}
             className={styles.links}
+            onClick={props.viewMenuHandler}
           >
             About
           </Link>
