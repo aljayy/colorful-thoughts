@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { commerce } from "../../lib/commerce";
 import { useParams } from "react-router-dom";
 import styles from "./DesignerCategory.module.scss";
+import SkeletonCategoryProducts from "../SkeletonLoading/SkeletonCategoryProducts";
 
 function DesignerCategory() {
   const [categoryProducts, setCategoryProducts] = useState([]);
@@ -41,6 +42,7 @@ function DesignerCategory() {
 
   return (
     <section className={styles.section}>
+      {categoryProducts.length === 0 && <SkeletonCategoryProducts />}
       {categoryProducts.length > 0 && (
         <div className={styles["hero-container"]}>
           <img src={categoryProducts[0]} />

@@ -11,6 +11,7 @@ import About from "./components/About/About";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let categoryArr = [];
 
@@ -46,6 +47,7 @@ function App() {
       });
     }
     setHomeProducts(categoryArr);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -58,7 +60,10 @@ function App() {
       <Routes>
         <Route
           path="/home"
-          element={[<Hero />, <HomePageProducts products={homeProducts} />]}
+          element={[
+            <Hero />,
+            <HomePageProducts products={homeProducts} loading={loading} />,
+          ]}
         />
         <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
         <Route path="/about/" element={<About />} />
