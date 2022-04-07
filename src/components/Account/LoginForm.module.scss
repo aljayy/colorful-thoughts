@@ -1,0 +1,86 @@
+.wrapper {
+  margin-top: 13rem;
+  height: 100vh;
+
+  form {
+    border: 2px solid black;
+    margin: 0 3rem;
+
+    div {
+      .register {
+        background-color: white;
+        border: none;
+        border-bottom: 2px solid #ff6700;
+        border-right: 2px solid #ff6700;
+        color: #ff6700;
+        font-family: "Coolvetica";
+        font-size: 2.6rem;
+        padding: 1rem 0;
+        width: 50%;
+      }
+
+      .inactive {
+        color: #c0c0c0;
+        border: none;
+        border-bottom: 2px solid #c0c0c0;
+      }
+    }
+
+    .input {
+      padding: 2rem;
+
+      div {
+        h2 {
+          font-size: 2rem;
+          margin-top: 1rem;
+        }
+
+        input {
+          border: 1px solid black;
+          border-radius: 0;
+          height: 4rem;
+          font-family: "Libre Baskerville";
+          font-size: 1.6rem;
+          padding-left: 1rem;
+          width: 100%;
+        }
+
+        input:focus {
+          outline: none;
+          caret-color: #ff6700;
+        }
+
+        .password {
+          display: flex;
+          border: 1px solid black;
+
+          input {
+            border: none;
+          }
+
+          button {
+            background-color: white;
+            padding-right: 1rem;
+          }
+        }
+      }
+
+      p {
+        color: #757575;
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+      }
+
+      .login {
+        background-color: #ff6700;
+        border: none;
+        color: white;
+        font-family: "Coolvetica";
+        font-size: 2.6rem;
+        margin-top: 2rem;
+        padding: 0.5rem 0;
+        width: 100%;
+      }
+    }
+  }
+}

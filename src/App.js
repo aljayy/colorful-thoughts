@@ -8,6 +8,8 @@ import { commerce } from "./lib/commerce";
 import Footer from "./components/Footer/Footer";
 import DesignerCategory from "./components/DesignerCategory/DesignerCategory";
 import About from "./components/About/About";
+import LoginForm from "./components/Account/LoginForm";
+import SignUpForm from "./components/Account/SignUpForm";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -67,6 +69,8 @@ function App() {
         />
         <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
         <Route path="/about/" element={<About />} />
+        <Route path="/login/" element={<LoginForm />} />
+        <Route path="/signup/" element={<SignUpForm />} />
       </Routes>
       <Footer />
     </div>

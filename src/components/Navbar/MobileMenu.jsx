@@ -17,7 +17,14 @@ function MobileMenu(props) {
           </Link>
         </li>
         <li>
-          <a className={styles.links}>Account</a>
+          <Link
+            to="/login"
+            style={{ textDecoration: "none" }}
+            className={styles.links}
+            onClick={props.viewMenuHandler}
+          >
+            Account
+          </Link>
         </li>
         <li>
           <a className={styles.links}>Categories</a>

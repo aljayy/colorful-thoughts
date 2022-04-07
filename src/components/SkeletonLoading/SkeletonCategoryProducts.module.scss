@@ -12,7 +12,7 @@
       rgba(255, 255, 255, 0.5) 50%,
       rgba(255, 255, 255, 0) 80%
     ),
-    #d9d9d9;
+    #e5e5e5;
   background-repeat: repeat-y;
   background-size: 5rem 20rem;
   background-position: 0 0;
@@ -43,7 +43,8 @@
   }
 
   .product-details {
-    border-top: 1px solid #c0c0c0;
+    // border-top: 1px solid #c0c0c0;
+    border-top: 1px solid #eeee;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -61,7 +62,7 @@
         margin: 0.5rem;
       }
 
-      .name:last-child {
+      .product-name:last-child {
         width: 80%;
       }
     }
