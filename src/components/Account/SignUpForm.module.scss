@@ -4,10 +4,11 @@
 
   form {
     border: 2px solid black;
+    font-family: "Coolvetica";
     margin: 0 3rem;
 
     div {
-      .register {
+      .sign-up {
         background-color: white;
         border: none;
         border-bottom: 2px solid #ff6700;
@@ -26,52 +27,66 @@
       }
     }
 
-    .input {
+    .customer-info {
       padding: 2rem;
 
-      div {
-        h2 {
-          font-size: 2rem;
-          margin-top: 1rem;
-        }
+      input {
+        border: 1px solid black;
+        border-radius: 0;
+        height: 4rem;
+        font-family: "Libre Baskerville";
+        font-size: 1.6rem;
+        padding-left: 1rem;
+        width: 100%;
+      }
+
+      input:focus {
+        outline: none;
+        caret-color: #ff6700;
+      }
+
+      .password {
+        display: flex;
+        border: 1px solid black;
+        align-items: center;
 
         input {
-          border: 1px solid black;
-          border-radius: 0;
-          height: 4rem;
+          border: none;
+        }
+
+        button {
+          border: none;
+          background-color: white;
+          padding-right: 1rem;
+        }
+      }
+
+      h3 {
+        font-family: "Libre Baskerville";
+        margin-top: 1rem;
+      }
+
+      .requirements {
+        display: flex;
+        margin-top: 1rem;
+
+        img {
+          width: 1.2rem;
+        }
+
+        p {
+          color: #880d1e;
           font-family: "Libre Baskerville";
-          font-size: 1.6rem;
-          padding-left: 1rem;
-          width: 100%;
+          font-size: 1.2rem;
+          margin-left: 1rem;
         }
 
-        input:focus {
-          outline: none;
-          caret-color: #ff6700;
-        }
-
-        .password {
-          display: flex;
-          border: 1px solid black;
-
-          input {
-            border: none;
-          }
-
-          button {
-            background-color: white;
-            padding-right: 1rem;
-          }
+        .valid {
+          color: #4ecb71;
         }
       }
 
-      p {
-        color: #757575;
-        font-size: 1.2rem;
-        margin-top: 0.5rem;
-      }
-
-      .signup {
+      .submit {
         background-color: #ff6700;
         border: none;
         color: white;
@@ -82,5 +97,22 @@
         width: 100%;
       }
     }
+  }
+}
+
+.titles {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.error-styling {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  p {
+    color: #880d1e;
+    display: none;
+    font-size: 1.2rem;
   }
 }
