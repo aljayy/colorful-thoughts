@@ -8,8 +8,15 @@ import valid from "../../images/valid.svg";
 import invalid from "../../images/invalid.svg";
 
 function SignUpForm() {
+  const nameRef = useRef();
+  const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  // Name state
+  const [nameError, setNameError] = useState(false);
+  // Email Structure Validation
+  const [emailValid, setEmailValid] = useState(true);
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
   // Toggle the eye slash to view password or not
   const [viewPassword, setViewPassword] = useState(true);
   // Password Validating
@@ -22,6 +29,33 @@ function SignUpForm() {
     passwordUpperCase: false,
     passwordSymbol: false,
   });
+
+  function userName() {
+    const name = nameRef.current.value;
+    if (name === "" || name === null || name.length < 2) {
+      setNameError(true);
+    } else if (name.length >= 2) {
+      setNameError(false);
+    }
+  }
+
+  function validateEmailStructure() {
+    const regexPattern =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    const email = emailRef.current.value;
+
+    if (email === "" || email === null) {
+      setEmailValid(false);
+      setEmailErrorMessage("Please input an email");
+    } else if (!email.match(regexPattern)) {
+      setEmailErrorMessage("Invalid email address");
+      setEmailValid(false);
+    } else if (email.match(regexPattern)) {
+      setEmailErrorMessage("");
+      setEmailValid(true);
+    }
+  }
 
   function toggleViewPassword(e) {
     e.preventDefault();
@@ -90,6 +124,12 @@ function SignUpForm() {
     };
   }, [password, confirmPassword]);
 
+  function signUpUser(e) {
+    e.preventDefault();
+    validateEmailStructure();
+    userName();
+  }
+
   return (
     <div className={styles.wrapper}>
       <form>
@@ -104,16 +144,24 @@ function SignUpForm() {
         </div>
         {/* Customer Input */}
         <div className={styles["customer-info"]}>
-          <div className={styles["error-styling"]}>
+          <div className={nameError ? styles.errors : styles["no-errors"]}>
             <h2 className={styles.titles}>First Name</h2>
             <p>A name is required.</p>
           </div>
-          <input type="text"></input>
-          <div className={styles["error-styling"]}>
+          <input
+            ref={nameRef}
+            type="text"
+            className={nameError ? styles["error-input"] : ""}
+          ></input>
+          <div className={emailValid ? styles["no-errors"] : styles.errors}>
             <h2 className={styles.titles}>Email</h2>
-            <p>An email is required.</p>
+            <p>{emailErrorMessage}</p>
           </div>
-          <input type="email"></input>
+          <input
+            ref={emailRef}
+            type="email"
+            className={!emailValid ? styles["error-input"] : ""}
+          ></input>
           <h2 className={styles.titles}>Password</h2>
           <div className={styles.password}>
             <input
@@ -204,7 +252,9 @@ function SignUpForm() {
               Both passwords must match
             </p>
           </div>
-          <button className={styles.submit}>Sign Up</button>
+          <button className={styles.submit} onClick={signUpUser}>
+            Sign Up
+          </button>
         </div>
       </form>
     </div>
