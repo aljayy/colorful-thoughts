@@ -30,7 +30,6 @@ function App() {
 
       const productData = [];
 
-      console.log(productResponse);
       productData.push(
         productResponse.data.map((product) => {
           return {

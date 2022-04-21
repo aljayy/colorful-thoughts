@@ -6,6 +6,8 @@ import view from "../../images/view.svg";
 import hide from "../../images/hide.svg";
 import valid from "../../images/valid.svg";
 import invalid from "../../images/invalid.svg";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Firebase";
 
 function SignUpForm() {
   const nameRef = useRef();
@@ -31,10 +33,10 @@ function SignUpForm() {
   });
 
   function userName() {
-    const name = nameRef.current.value;
-    if (name === "" || name === null || name.length < 2) {
+    const userName = nameRef.current.value;
+    if (userName === "" || userName === null || userName.length < 2) {
       setNameError(true);
-    } else if (name.length >= 2) {
+    } else if (userName.length >= 2) {
       setNameError(false);
     }
   }
@@ -47,7 +49,7 @@ function SignUpForm() {
 
     if (email === "" || email === null) {
       setEmailValid(false);
-      setEmailErrorMessage("Please input an email");
+      setEmailErrorMessage("Email is required");
     } else if (!email.match(regexPattern)) {
       setEmailErrorMessage("Invalid email address");
       setEmailValid(false);
@@ -124,10 +126,43 @@ function SignUpForm() {
     };
   }, [password, confirmPassword]);
 
-  function signUpUser(e) {
+  async function signUpUser(e) {
     e.preventDefault();
-    validateEmailStructure();
-    userName();
+    const userName = nameRef.current.value;
+    const email = emailRef.current.value;
+    try {
+      if (userName.length === 0 && email.length === 0) {
+        throw Error("Name and Email Error");
+      } else if (userName.length === 0) {
+        throw Error("Name Error");
+      } else if (email.length === 0) {
+        throw Error("Email Error");
+      } else if (password.length === 0) {
+        throw Error("No password");
+      }
+
+      console.log(userName, email, password);
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      console.log(userCredentials);
+    } catch (e) {
+      if (e.message === "Name and Email Error") {
+        setNameError(true);
+        setEmailValid(false);
+        setEmailErrorMessage("Email is required");
+      } else if (e.message === "Name Error") {
+        setNameError(true);
+      } else if (e.message === "Email Error") {
+        setEmailValid(false);
+        setEmailErrorMessage("Email is required");
+      }
+
+      console.log(e.message);
+    }
   }
 
   return (
@@ -152,6 +187,7 @@ function SignUpForm() {
             ref={nameRef}
             type="text"
             className={nameError ? styles["error-input"] : ""}
+            onBlur={userName}
           ></input>
           <div className={emailValid ? styles["no-errors"] : styles.errors}>
             <h2 className={styles.titles}>Email</h2>
@@ -161,6 +197,7 @@ function SignUpForm() {
             ref={emailRef}
             type="email"
             className={!emailValid ? styles["error-input"] : ""}
+            onBlur={validateEmailStructure}
           ></input>
           <h2 className={styles.titles}>Password</h2>
           <div className={styles.password}>
