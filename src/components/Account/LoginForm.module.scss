@@ -59,6 +59,7 @@
           }
 
           button {
+            border: none;
             background-color: white;
             padding-right: 1rem;
           }
@@ -67,8 +68,17 @@
 
       p {
         color: #757575;
+        font-family: "Libre Baskerville";
         font-size: 1.2rem;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .fail {
+        color: #880d1e;
+        font-size: 1.4rem;
+        font-weight: 700;
+        display: none;
+        margin-top: 1rem;
       }
 
       .login {
@@ -83,4 +93,8 @@
       }
     }
   }
+}
+
+.display {
+  display: block !important;
 }

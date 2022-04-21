@@ -128,8 +128,8 @@ function SignUpForm() {
 
   async function signUpUser(e) {
     e.preventDefault();
-    const userName = nameRef.current.value;
-    const email = emailRef.current.value;
+    const userName = nameRef.current.value.trim();
+    const email = emailRef.current.value.trim();
     try {
       if (userName.length === 0 && email.length === 0) {
         throw Error("Name and Email Error");
