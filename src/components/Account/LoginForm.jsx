@@ -1,12 +1,13 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.scss";
 import view from "../../images/view.svg";
 import hide from "../../images/hide.svg";
-import { auth } from "../../Firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import AuthContext from "../../store/auth-context";
 
 function LoginForm() {
+  const loginCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const [invalidLogin, setInvalidLogin] = useState(false);
@@ -27,16 +28,12 @@ function LoginForm() {
       }
 
       setInvalidLogin(false);
-      const userCredentials = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(userCredentials);
+
+      loginCtx.loginUser(email, password);
+
+      navigate("/dashboard");
     } catch (e) {
-      console.log(e.message);
       setInvalidLogin(true);
-      console.log(invalidLogin);
     }
   }
 

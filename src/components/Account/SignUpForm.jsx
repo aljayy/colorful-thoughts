@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.scss";
 // Image imports
 import view from "../../images/view.svg";
 import hide from "../../images/hide.svg";
 import valid from "../../images/valid.svg";
 import invalid from "../../images/invalid.svg";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../Firebase";
+import AuthContext from "../../store/auth-context";
 
 function SignUpForm() {
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -31,6 +32,8 @@ function SignUpForm() {
     passwordUpperCase: false,
     passwordSymbol: false,
   });
+
+  console.log(authCtx.currentUser);
 
   function userName() {
     const userName = nameRef.current.value;
@@ -141,14 +144,9 @@ function SignUpForm() {
         throw Error("No password");
       }
 
-      console.log(userName, email, password);
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      authCtx.createUser(email, password, userName);
 
-      console.log(userCredentials);
+      navigate("/dashboard");
     } catch (e) {
       if (e.message === "Name and Email Error") {
         setNameError(true);
@@ -160,8 +158,6 @@ function SignUpForm() {
         setEmailValid(false);
         setEmailErrorMessage("Email is required");
       }
-
-      console.log(e.message);
     }
   }
 

@@ -10,6 +10,7 @@ import DesignerCategory from "./components/DesignerCategory/DesignerCategory";
 import About from "./components/About/About";
 import LoginForm from "./components/Account/LoginForm";
 import SignUpForm from "./components/Account/SignUpForm";
+import UserDashboard from "./components/Account/UserDashboard";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -70,6 +71,7 @@ function App() {
         <Route path="/about/" element={<About />} />
         <Route path="/login/" element={<LoginForm />} />
         <Route path="/signup/" element={<SignUpForm />} />
+        <Route path="/dashboard/" element={<UserDashboard />} />
       </Routes>
       <Footer />
     </div>
