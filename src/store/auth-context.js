@@ -26,6 +26,20 @@ export function AuthContextProvider({ children }) {
       displayName: userName,
     });
 
+    // const serverResponse = await fetch("http://localhost:5000", {
+    //   method: "POST",
+    //   mode: "no-cors",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     email: email,
+    //     external_id: userCredentials.user.uid,
+    //   }),
+    // });
+
+    // console.log(serverResponse);
+
     setCurrentUser(userCredentials.user);
   }
 

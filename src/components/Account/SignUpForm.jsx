@@ -33,8 +33,6 @@ function SignUpForm() {
     passwordSymbol: false,
   });
 
-  console.log(authCtx.currentUser);
-
   function userName() {
     const userName = nameRef.current.value;
     if (userName === "" || userName === null || userName.length < 2) {
