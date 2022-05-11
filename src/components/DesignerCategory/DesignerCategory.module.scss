@@ -24,31 +24,5 @@
 
   .product-container {
     border: 1px #eeee solid;
-
-    .image-container {
-      height: 16rem;
-      width: 100%;
-
-      img {
-        height: 100%;
-        object-fit: contain;
-        width: 100%;
-      }
-    }
-
-    .product-details {
-      border-top: 1px solid #c0c0c0;
-      display: flex;
-      flex-direction: row;
-      font-family: "Libre Baskerville";
-      height: 6rem;
-      padding: 0.5rem 1rem;
-
-      .product-price {
-        align-self: flex-end;
-        font-size: 1.4rem;
-        font-weight: bold;
-      }
-    }
   }
 }

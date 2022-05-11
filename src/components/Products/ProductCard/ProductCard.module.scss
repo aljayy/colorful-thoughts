@@ -1,0 +1,30 @@
+.container {
+  border: 1px #eeee solid;
+
+  .imgcontainer {
+    height: 16rem;
+    width: 100%;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  .productdetails {
+    border-top: 1px solid #c0c0c0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Libre Baskerville";
+    height: 6rem;
+    padding: 0.5rem 1rem;
+
+    .productprice {
+      align-self: flex-end;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { commerce } from "../../lib/commerce";
 import { useParams } from "react-router-dom";
 import styles from "./DesignerCategory.module.scss";
 import SkeletonCategoryProducts from "../SkeletonLoading/SkeletonCategoryProducts";
+import ProductCard from "../Products/ProductCard/ProductCard";
 
 function DesignerCategory() {
   const [categoryProducts, setCategoryProducts] = useState([]);
@@ -52,17 +53,11 @@ function DesignerCategory() {
         <div className={styles["product-page-container"]}>
           {categoryProducts[1].map((product) => {
             return (
-              <div className={styles["product-container"]}>
-                <div className={styles["image-container"]}>
-                  <img src={product.image} />
-                </div>
-                <div className={styles["product-details"]}>
-                  <p>{product.name}</p>
-                  <p
-                    className={styles["product-price"]}
-                  >{`$${product.price}`}</p>
-                </div>
-              </div>
+              <ProductCard
+                image={product.image}
+                name={product.name}
+                price={product.price}
+              />
             );
           })}
         </div>
