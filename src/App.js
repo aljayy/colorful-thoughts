@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero";
-import HomePageProducts from "./components/HomePageProducts/HomePageProducts";
+import HomePageProducts from "./components/Products/HomePageProducts/HomePageProducts";
 import styles from "./App.module.scss";
 import { commerce } from "./lib/commerce";
 import Footer from "./components/Footer/Footer";
@@ -11,6 +11,7 @@ import About from "./components/About/About";
 import LoginForm from "./components/Account/LoginForm";
 import SignUpForm from "./components/Account/SignUpForm";
 import UserDashboard from "./components/Account/UserDashboard";
+import IndividialProduct from "./components/Products/IndividualProduct/IndividualProduct";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -37,6 +38,7 @@ function App() {
             productName: product.name,
             productImage: product.image.url,
             productPrice: product.price.raw,
+            productId: product.id,
           };
         })
       );
@@ -68,6 +70,7 @@ function App() {
           ]}
         />
         <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
+        <Route path="/product/:productId" element={<IndividialProduct />} />
         <Route path="/about/" element={<About />} />
         <Route path="/login/" element={<LoginForm />} />
         <Route path="/signup/" element={<SignUpForm />} />
