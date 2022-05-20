@@ -38,7 +38,7 @@
         display: flex;
 
         .sizebox {
-          border: 1px solid black;
+          border: 1px solid #ff6700;
           height: 4rem;
           width: 4rem;
           margin-top: 2rem;
@@ -67,7 +67,7 @@
         margin-top: 2rem;
 
         .colorbox {
-          border: 1px solid black;
+          border: 1px solid #ff6700;
           width: 12rem;
           height: 4rem;
           position: relative;
@@ -118,6 +118,7 @@
 
       img {
         height: 2rem;
+        transition: all 0.3s linear;
       }
 
       p {
@@ -125,5 +126,26 @@
         margin-left: 0.5rem;
       }
     }
+
+    .answer {
+      font-family: "Libre Baskerville", sans-serif;
+      margin: 1rem 0 0 2.5rem;
+      transition: max-height 0.4s linear;
+      height: auto;
+      max-height: 20rem;
+      overflow: hidden;
+
+      ul {
+        margin: 1rem 0 0 1.5rem;
+      }
+    }
   }
+}
+
+.hide {
+  max-height: 0 !important;
+}
+
+.rotate {
+  transform: rotate(90deg);
 }

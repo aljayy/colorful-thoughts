@@ -8,6 +8,8 @@ import arrow from "../../../images/accordianarrow.svg";
 function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
+  const [showAccordian, setShowAccordian] = useState(false);
   const params = useParams();
 
   function updateIndex(newIndex) {
@@ -66,6 +68,11 @@ function IndividualProduct() {
     setProductDetails(productResponse);
   }, []);
 
+  function setSize(index) {
+    console.log("Size changed");
+    setSelectedSize(index);
+  }
+
   return (
     <section>
       {productDetails.length > 0 && (
@@ -87,15 +94,21 @@ function IndividualProduct() {
               <h2>Size</h2>
               <div className={styles.sizelayout}>
                 {productDetails[3].sizes.map((size, index) => {
-                  if (index === 0) {
+                  if (index === selectedSize) {
                     return (
-                      <div className={styles.sizebox}>
+                      <div
+                        className={styles.sizebox}
+                        onClick={() => setSize(index)}
+                      >
                         <p>{size.name}</p>
                       </div>
                     );
                   }
                   return (
-                    <div className={`${styles.sizebox} ${styles.nonselected}`}>
+                    <div
+                      className={`${styles.sizebox} ${styles.nonselected}`}
+                      onClick={() => setSize(index)}
+                    >
                       <p>{size.name}</p>
                     </div>
                   );
@@ -117,11 +130,25 @@ function IndividualProduct() {
           </div>
           <button className={styles.addtobag}>Add to Bag</button>
           <div className={styles.accordian}>
-            <div className={styles.accordiancard}>
+            <div
+              className={styles.accordiancard}
+              onClick={() => setShowAccordian((show) => !show)}
+            >
               <div className={styles.accordianquestion}>
-                <img src={arrow} />
+                <img
+                  src={arrow}
+                  className={!showAccordian ? "" : styles.rotate}
+                />
                 <p>Product Details</p>
               </div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: productDetails[1].description,
+                }}
+                className={`${styles.answer} ${
+                  showAccordian ? "" : styles.hide
+                }`}
+              ></div>
             </div>
           </div>
         </div>
