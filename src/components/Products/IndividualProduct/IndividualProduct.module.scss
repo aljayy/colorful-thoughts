@@ -12,6 +12,74 @@
       height: 100%;
       object-fit: contain;
       width: 100%;
+      border-bottom: 1px solid #c0c0c0;
+    }
+  }
+
+  .productdetailscontainer {
+    margin: 0 3rem;
+    font-family: "Libre Baskerville", sans-serif;
+
+    .section {
+      border-bottom: 1px solid #c0c0c0;
+      padding: 2rem 0;
+
+      .producttitle {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .productprice {
+        font-size: 1.6rem;
+        font-weight: bold;
+      }
+
+      .sizelayout {
+        display: flex;
+
+        .sizebox {
+          border: 1px solid black;
+          height: 4rem;
+          width: 4rem;
+          margin-top: 2rem;
+          margin-right: 2rem;
+          position: relative;
+
+          p {
+            font-size: 1.5rem;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        .nonselected {
+          border: 1px solid #7777;
+
+          p {
+            color: #777;
+          }
+        }
+      }
+
+      .colorway {
+        margin-top: 2rem;
+
+        .colorbox {
+          border: 1px solid black;
+          width: 12rem;
+          height: 4rem;
+          position: relative;
+
+          p {
+            font-size: 1.5rem;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+          }
+        }
+      }
     }
   }
 }
@@ -25,32 +93,37 @@
   }
 }
 
-// .container {
-//   margin-top: 6.5rem;
-//   overflow: hidden;
+.addtobag {
+  background-color: #ff6700;
+  border: none;
+  color: white;
+  height: 6rem;
+  width: 16rem;
+  font-family: "Coolvetica", sans-serif;
+  font-size: 1.8rem;
+  display: block;
+  margin: 2rem auto;
+}
 
-//   .slidecontainer {
-//     width: 100%;
-//     height: 30rem;
-//     display: flex;
-//     overflow: hidden;
-//     transform: translateX(0);
-//     transition: transform 0.3s ease-out;
-//     cursor: grab;
+.accordian {
+  margin: 6rem 3rem 2rem 3rem;
 
-//     .slide {
-// height: 100%;
-// object-fit: contain;
-// width: 100%;
-//       user-select: none;
-//     }
-//   }
-// }
+  .accordiancard {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 1rem;
 
-// .grabbing {
-//   cursor: grabbing;
+    .accordianquestion {
+      display: flex;
+      align-items: center;
 
-//   .slide {
-//     transform: scale(0.9);
-//   }
-// }
+      img {
+        height: 2rem;
+      }
+
+      p {
+        font-size: 1.4rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

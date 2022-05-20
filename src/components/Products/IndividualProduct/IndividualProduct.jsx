@@ -3,16 +3,17 @@ import { useParams } from "react-router-dom";
 import { commerce } from "../../../lib/commerce";
 import { useSwipeable } from "react-swipeable";
 import styles from "./IndividualProduct.module.scss";
+import arrow from "../../../images/accordianarrow.svg";
 
 function IndividualProduct() {
-  const [productDetails, setProductDetails] = useState([{}, {}, {}, []]);
+  const [productDetails, setProductDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
   const params = useParams();
 
   function updateIndex(newIndex) {
     if (newIndex < 0) {
-      newIndex = productDetails[3].length - 1;
-    } else if (newIndex >= productDetails[3].length) {
+      newIndex = productDetails[5].length - 1;
+    } else if (newIndex >= productDetails[5].length) {
       newIndex = 0;
     }
 
@@ -51,35 +52,101 @@ function IndividualProduct() {
           description: response["description"],
         });
       }
+
+      if (property === "variant_groups") {
+        productResponse.push(
+          {
+            sizes: response.variant_groups[0].options,
+          },
+          { colorway: response.variant_groups[1].options }
+        );
+      }
     }
 
     setProductDetails(productResponse);
   }, []);
 
   return (
-    <div className={styles.container} {...handlers}>
-      <div
-        className={`${styles.slidecontainer}`}
-        style={{ transform: `translateX(-${activeImage * 100}%)` }}
-      >
-        {productDetails.length === 0 && <p>No image</p>}
-        {productDetails.length > 0 &&
-          productDetails[3].map((image) => {
-            return <img src={image.url} className={styles.slide} />;
-          })}
-      </div>
-      <div className={styles.indicators}>
-        <button onClick={() => updateIndex(activeImage - 1)}>Prev</button>
-        {productDetails.length > 0 &&
-          productDetails[3].map((image, index) => {
-            return (
-              <button onClick={() => updateIndex(index)}>{index + 1}</button>
-            );
-          })}
-        <button onClick={() => updateIndex(activeImage + 1)}>Next</button>
-      </div>
-    </div>
+    <section>
+      {productDetails.length > 0 && (
+        <div className={styles.container} {...handlers}>
+          <div
+            className={`${styles.slidecontainer}`}
+            style={{ transform: `translateX(-${activeImage * 100}%)` }}
+          >
+            {productDetails[5].map((image) => {
+              return <img src={image.url} className={styles.slide} />;
+            })}
+          </div>
+          <div className={styles.productdetailscontainer}>
+            <div className={styles.section}>
+              <h2 className={styles.producttitle}>{productDetails[0].title}</h2>
+              <p className={styles.productprice}>{productDetails[2].price}</p>
+            </div>
+            <div className={styles.section}>
+              <h2>Size</h2>
+              <div className={styles.sizelayout}>
+                {productDetails[3].sizes.map((size, index) => {
+                  if (index === 0) {
+                    return (
+                      <div className={styles.sizebox}>
+                        <p>{size.name}</p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div className={`${styles.sizebox} ${styles.nonselected}`}>
+                      <p>{size.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.section}>
+              <h2>Colorway</h2>
+              <div className={styles.colorway}>
+                {productDetails[4].colorway.map((color) => {
+                  return (
+                    <div className={styles.colorbox}>
+                      <p>{color.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <button className={styles.addtobag}>Add to Bag</button>
+          <div className={styles.accordian}>
+            <div className={styles.accordiancard}>
+              <div className={styles.accordianquestion}>
+                <img src={arrow} />
+                <p>Product Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
 
+{
+  /* <div className={styles.description}>
+  <p
+    dangerouslySetInnerHTML={{ __html: productDetails[1].description }}
+  ></p>
+</div> */
+}
+{
+  /* <div className={styles.indicators}>
+  <button onClick={() => updateIndex(activeImage - 1)}>Prev</button>
+  {productDetails.length > 0 &&
+    productDetails[5].map((image, index) => {
+      return (
+        <button onClick={() => updateIndex(index)}>{index + 1}</button>
+      );
+    })}
+  <button onClick={() => updateIndex(activeImage + 1)}>Next</button>
+</div> */
+}
 export default IndividualProduct;
