@@ -4,6 +4,7 @@ import MobileMenu from "./MobileMenu";
 
 // Image Imports
 import logo from "../../images/mobilelogo.svg";
+import search from "../../images/searchicon.svg";
 
 // Style Import
 import styles from "./Navbar.module.scss";
@@ -12,14 +13,11 @@ function Navbar() {
   const [menu, setMenu] = useState(false);
 
   function viewMenu() {
-    setMenu(!menu);
+    setMenu((menu) => !menu);
   }
 
   return (
     <nav>
-      <Link to="/home">
-        <img src={logo} />
-      </Link>
       <button
         onClick={viewMenu}
         className={`${styles["mobile-menu"]} ${menu ? styles["open"] : ""}`}
@@ -28,6 +26,10 @@ function Navbar() {
         <div className={styles["bar-two"]} />
         <div className={styles["bar-three"]} />
       </button>
+      <Link to="/home">
+        <img src={logo} />
+      </Link>
+      <img src={search} />
       <MobileMenu open={menu} viewMenuHandler={viewMenu} />
     </nav>
   );
