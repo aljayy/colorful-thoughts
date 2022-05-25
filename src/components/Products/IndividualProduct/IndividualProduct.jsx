@@ -9,6 +9,7 @@ function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [showAccordian, setShowAccordian] = useState(false);
   const params = useParams();
 
@@ -73,6 +74,13 @@ function IndividualProduct() {
     setSelectedSize(index);
   }
 
+  function quantityHandler(quantity) {
+    if (quantity < 1) {
+      quantity = 1;
+    }
+    setQuantity(quantity);
+  }
+
   return (
     <section>
       {productDetails.length > 0 && (
@@ -128,7 +136,30 @@ function IndividualProduct() {
               </div>
             </div>
           </div>
-          <button className={styles.addtobag}>Add to Bag</button>
+          <div className={styles.addtobagcontainer}>
+            <button className={styles.addtobag}>Add to Bag</button>
+            <div className={styles.quantity}>
+              <div className={styles.finalquantity}>
+                <p>{quantity}</p>
+              </div>
+              <div className={styles.quantitycontrols}>
+                <button
+                  onClick={() => {
+                    quantityHandler(quantity + 1);
+                  }}
+                >
+                  <img src={arrow} className={styles.increase} />
+                </button>
+                <button
+                  onClick={() => {
+                    quantityHandler(quantity - 1);
+                  }}
+                >
+                  <img src={arrow} className={styles.decrease} />
+                </button>
+              </div>
+            </div>
+          </div>
           <div className={styles.accordian}>
             <div
               className={styles.accordiancard}

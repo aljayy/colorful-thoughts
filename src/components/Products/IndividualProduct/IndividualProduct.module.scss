@@ -38,7 +38,7 @@
         display: flex;
 
         .sizebox {
-          border: 1px solid #ff6700;
+          border: 1px solid black;
           height: 4rem;
           width: 4rem;
           margin-top: 2rem;
@@ -67,7 +67,7 @@
         margin-top: 2rem;
 
         .colorbox {
-          border: 1px solid #ff6700;
+          border: 1px solid black;
           width: 12rem;
           height: 4rem;
           position: relative;
@@ -82,6 +82,67 @@
       }
     }
   }
+
+  .addtobagcontainer {
+    margin: 2rem 3rem 0 3rem;
+    height: 6rem;
+    display: flex;
+
+    .addtobag {
+      background-color: #ff6700;
+      border: none;
+      color: white;
+      height: 6rem;
+      width: 60%;
+      font-family: "Coolvetica", sans-serif;
+      font-size: 1.8rem;
+    }
+
+    .quantity {
+      font-family: "Libre Baskerville", sans-serif;
+      display: inline-flex;
+      width: 40%;
+      justify-content: center;
+
+      .finalquantity {
+        border: 1px solid #c0c0c0;
+        margin-right: 2rem;
+        padding: 1.5rem 2rem;
+
+        p {
+          font-size: 1.4rem;
+          margin-top: 0.5rem;
+        }
+      }
+
+      .quantitycontrols {
+        display: inline-flex;
+        flex-direction: column;
+        width: 4rem;
+
+        :nth-child(2) {
+          border-top: 1px solid black;
+        }
+
+        button {
+          background-color: white;
+          border: none;
+
+          img {
+            height: 2.6rem;
+          }
+        }
+
+        .increase {
+          transform: rotate(-90deg);
+        }
+
+        .decrease {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
 }
 
 .indicators {
@@ -91,18 +152,6 @@
   & > button {
     margin: 5px;
   }
-}
-
-.addtobag {
-  background-color: #ff6700;
-  border: none;
-  color: white;
-  height: 6rem;
-  width: 16rem;
-  font-family: "Coolvetica", sans-serif;
-  font-size: 1.8rem;
-  display: block;
-  margin: 2rem auto;
 }
 
 .accordian {
