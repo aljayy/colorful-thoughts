@@ -9,6 +9,7 @@ function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [showAccordian, setShowAccordian] = useState(false);
   const params = useParams();
@@ -59,9 +60,13 @@ function IndividualProduct() {
       if (property === "variant_groups") {
         productResponse.push(
           {
+            sizes_variant_id: response.variant_groups[0].id,
             sizes: response.variant_groups[0].options,
           },
-          { colorway: response.variant_groups[1].options }
+          {
+            colorway_variant_id: response.variant_groups[1].id,
+            colorway: response.variant_groups[1].options,
+          }
         );
       }
     }
@@ -70,8 +75,11 @@ function IndividualProduct() {
   }, []);
 
   function setSize(index) {
-    console.log("Size changed");
     setSelectedSize(index);
+  }
+
+  function setColor(index) {
+    setSelectedColor(index);
   }
 
   function quantityHandler(quantity) {
@@ -79,6 +87,19 @@ function IndividualProduct() {
       quantity = 1;
     }
     setQuantity(quantity);
+  }
+
+  async function addProductToBag() {
+    const productId = params.productId;
+    const sizesVariantId = productDetails[3].sizes_variant_id;
+    const size = productDetails[3].sizes[selectedSize].id;
+    const colorwayVariantId = productDetails[4].colorway_variant_id;
+    const color = productDetails[4].colorway[selectedColor].id;
+
+    const response = await commerce.cart.add(productId, quantity, {
+      [sizesVariantId]: size,
+      [colorwayVariantId]: color,
+    });
   }
 
   return (
@@ -126,9 +147,22 @@ function IndividualProduct() {
             <div className={styles.section}>
               <h2>Colorway</h2>
               <div className={styles.colorway}>
-                {productDetails[4].colorway.map((color) => {
+                {productDetails[4].colorway.map((color, index) => {
+                  if (index === selectedColor) {
+                    return (
+                      <div
+                        className={styles.colorbox}
+                        onClick={() => setColor(index)}
+                      >
+                        <p>{color.name}</p>
+                      </div>
+                    );
+                  }
                   return (
-                    <div className={styles.colorbox}>
+                    <div
+                      className={`${styles.colorbox} ${styles.nonselected}`}
+                      onClick={() => setColor(index)}
+                    >
                       <p>{color.name}</p>
                     </div>
                   );
@@ -137,7 +171,9 @@ function IndividualProduct() {
             </div>
           </div>
           <div className={styles.addtobagcontainer}>
-            <button className={styles.addtobag}>Add to Bag</button>
+            <button className={styles.addtobag} onClick={addProductToBag}>
+              Add to Bag
+            </button>
             <div className={styles.quantity}>
               <div className={styles.finalquantity}>
                 <p>{quantity}</p>
