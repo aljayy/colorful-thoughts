@@ -8,6 +8,8 @@ import arrow from "../../../images/accordianarrow.svg";
 function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
+  const [allProductVariants, setAllProductVariants] = useState();
+  const [activeVariant, setActiveVariant] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -16,8 +18,8 @@ function IndividualProduct() {
 
   function updateIndex(newIndex) {
     if (newIndex < 0) {
-      newIndex = productDetails[5].length - 1;
-    } else if (newIndex >= productDetails[5].length) {
+      newIndex = allProductVariants[activeVariant].images.length - 1;
+    } else if (newIndex >= allProductVariants[activeVariant].images.length) {
       newIndex = 0;
     }
 
@@ -32,28 +34,26 @@ function IndividualProduct() {
   useEffect(async function productDetails() {
     const response = await commerce.products.retrieve(params.productId);
 
+    const variantResponse = await commerce.products.getVariants(
+      params.productId
+    );
+
     let productResponse = [];
+
+    setAllProductVariants(
+      Object.values(variantResponse)[0].map((variant) => {
+        return {
+          images: variant.assets,
+          description: variant.description,
+          price: variant.price.formatted_with_symbol,
+        };
+      })
+    );
 
     for (const property in response) {
       if (property === "name") {
         productResponse.push({
           title: response["name"],
-        });
-      }
-
-      if (property === "assets") {
-        productResponse.push(response["assets"]);
-      }
-
-      if (property === "price") {
-        productResponse.push({
-          price: response["price"].formatted_with_symbol,
-        });
-      }
-
-      if (property === "description") {
-        productResponse.push({
-          description: response["description"],
         });
       }
 
@@ -80,6 +80,7 @@ function IndividualProduct() {
 
   function setColor(index) {
     setSelectedColor(index);
+    setActiveVariant(index);
   }
 
   function quantityHandler(quantity) {
@@ -91,10 +92,10 @@ function IndividualProduct() {
 
   async function addProductToBag() {
     const productId = params.productId;
-    const sizesVariantId = productDetails[3].sizes_variant_id;
-    const size = productDetails[3].sizes[selectedSize].id;
-    const colorwayVariantId = productDetails[4].colorway_variant_id;
-    const color = productDetails[4].colorway[selectedColor].id;
+    const sizesVariantId = productDetails[1].sizes_variant_id;
+    const size = productDetails[1].sizes[selectedSize].id;
+    const colorwayVariantId = productDetails[2].colorway_variant_id;
+    const color = productDetails[2].colorway[selectedColor].id;
 
     const response = await commerce.cart.add(productId, quantity, {
       [sizesVariantId]: size,
@@ -110,19 +111,21 @@ function IndividualProduct() {
             className={`${styles.slidecontainer}`}
             style={{ transform: `translateX(-${activeImage * 100}%)` }}
           >
-            {productDetails[5].map((image) => {
+            {allProductVariants[activeVariant].images.map((image) => {
               return <img src={image.url} className={styles.slide} />;
             })}
           </div>
           <div className={styles.productdetailscontainer}>
             <div className={styles.section}>
               <h2 className={styles.producttitle}>{productDetails[0].title}</h2>
-              <p className={styles.productprice}>{productDetails[2].price}</p>
+              <p className={styles.productprice}>
+                {allProductVariants[activeVariant].price}
+              </p>
             </div>
             <div className={styles.section}>
               <h2>Size</h2>
               <div className={styles.sizelayout}>
-                {productDetails[3].sizes.map((size, index) => {
+                {productDetails[1].sizes.map((size, index) => {
                   if (index === selectedSize) {
                     return (
                       <div
@@ -147,7 +150,7 @@ function IndividualProduct() {
             <div className={styles.section}>
               <h2>Colorway</h2>
               <div className={styles.colorway}>
-                {productDetails[4].colorway.map((color, index) => {
+                {productDetails[2].colorway.map((color, index) => {
                   if (index === selectedColor) {
                     return (
                       <div
@@ -210,7 +213,7 @@ function IndividualProduct() {
               </div>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: productDetails[1].description,
+                  __html: allProductVariants[activeVariant].description,
                 }}
                 className={`${styles.answer} ${
                   showAccordian ? "" : styles.hide
