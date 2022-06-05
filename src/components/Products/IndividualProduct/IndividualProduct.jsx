@@ -17,6 +17,8 @@ function IndividualProduct() {
   const [showAccordian, setShowAccordian] = useState(false);
   const params = useParams();
 
+  const [spinner, setSpinner] = useState(false);
+
   function updateIndex(newIndex) {
     if (newIndex < 0) {
       newIndex = allProductVariants[activeVariant].images.length - 1;
@@ -92,6 +94,7 @@ function IndividualProduct() {
   }
 
   async function addProductToBag() {
+    setSpinner(true);
     const productId = params.productId;
     const sizesVariantId = productDetails[1].sizes_variant_id;
     const size = productDetails[1].sizes[selectedSize].id;
@@ -102,8 +105,8 @@ function IndividualProduct() {
       [sizesVariantId]: size,
       [colorwayVariantId]: color,
     });
+    setSpinner(false);
   }
-
   return (
     <section>
       {productDetails.length === 0 && <SkeletonIndividualProducts />}
@@ -176,8 +179,11 @@ function IndividualProduct() {
             </div>
           </div>
           <div className={styles.addtobagcontainer}>
-            <button className={styles.addtobag} onClick={addProductToBag}>
-              Add to Bag
+            <button
+              className={`${styles.addtobag} ${spinner ? styles.loading : ""}`}
+              onClick={addProductToBag}
+            >
+              <span>Add to Bag</span>
             </button>
             <div className={styles.quantity}>
               <div className={styles.finalquantity}>

@@ -56,14 +56,6 @@ section {
             font-size: 1.5rem;
           }
         }
-
-        // .nonselected {
-        //   border: 1px solid #7777;
-
-        //   p {
-        //     color: #777;
-        //   }
-        // }
       }
 
       .colorway {
@@ -95,11 +87,49 @@ section {
     .addtobag {
       background-color: #ff6700;
       border: none;
-      color: white;
       height: 6rem;
+      position: relative;
       width: 60%;
-      font-family: "Coolvetica", sans-serif;
-      font-size: 1.8rem;
+
+      &:active {
+        background-color: #c75000;
+      }
+
+      span {
+        color: white;
+        font-family: "Coolvetica", sans-serif;
+        font-size: 1.8rem;
+      }
+    }
+
+    .loading span {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .loading::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 4px solid transparent;
+      border-top: 4px solid white;
+      animation: spinner 1s infinite;
+    }
+
+    @keyframes spinner {
+      from {
+        transform: rotate(0turn);
+      }
+      to {
+        transform: rotate(1turn);
+      }
     }
 
     .quantity {
