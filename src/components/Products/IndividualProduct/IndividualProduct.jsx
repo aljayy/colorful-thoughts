@@ -4,6 +4,7 @@ import { commerce } from "../../../lib/commerce";
 import { useSwipeable } from "react-swipeable";
 import styles from "./IndividualProduct.module.scss";
 import arrow from "../../../images/accordianarrow.svg";
+import SkeletonIndividualProducts from "../../SkeletonLoading/SkeletonIndividualProducts";
 
 function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);
@@ -105,6 +106,7 @@ function IndividualProduct() {
 
   return (
     <section>
+      {productDetails.length === 0 && <SkeletonIndividualProducts />}
       {productDetails.length > 0 && (
         <div className={styles.container} {...handlers}>
           <div

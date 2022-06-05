@@ -1,5 +1,9 @@
-.container {
+section {
   margin-top: 6.5rem;
+  min-height: 100vh;
+}
+
+.container {
   overflow: hidden;
 
   .slidecontainer {
