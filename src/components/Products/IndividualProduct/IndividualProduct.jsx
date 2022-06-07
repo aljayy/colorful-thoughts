@@ -108,7 +108,7 @@ function IndividualProduct() {
     setSpinner(false);
   }
   return (
-    <section>
+    <section className={styles.wrapper}>
       {productDetails.length === 0 && <SkeletonIndividualProducts />}
       {productDetails.length > 0 && (
         <div className={styles.container} {...handlers}>
@@ -185,25 +185,23 @@ function IndividualProduct() {
             >
               <span>Add to Bag</span>
             </button>
-            <div className={styles.quantity}>
-              <div className={styles.finalquantity}>
+            <div className={styles["quantity-wrapper"]}>
+              <div className={styles["selected-quantity"]}>
                 <p>{quantity}</p>
               </div>
               <div className={styles.quantitycontrols}>
-                <button
+                <div
+                  className={styles["arrow-up"]}
                   onClick={() => {
                     quantityHandler(quantity + 1);
                   }}
-                >
-                  <img src={arrow} className={styles.increase} />
-                </button>
-                <button
+                />
+                <div
+                  className={styles["arrow-down"]}
                   onClick={() => {
                     quantityHandler(quantity - 1);
                   }}
-                >
-                  <img src={arrow} className={styles.decrease} />
-                </button>
+                />
               </div>
             </div>
           </div>
