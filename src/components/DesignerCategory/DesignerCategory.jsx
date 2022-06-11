@@ -31,6 +31,7 @@ function DesignerCategory() {
           name: product.name,
           image: product.image.url,
           price: product.price.raw,
+          id: product.id,
         };
       })
     );
@@ -57,6 +58,7 @@ function DesignerCategory() {
                 image={product.image}
                 name={product.name}
                 price={product.price}
+                id={product.id}
               />
             );
           })}
