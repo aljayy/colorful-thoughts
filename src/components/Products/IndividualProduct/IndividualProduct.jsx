@@ -19,6 +19,11 @@ function IndividualProduct() {
 
   const [spinner, setSpinner] = useState(false);
 
+  if (productDetails.length > 0) {
+    console.log(allProductVariants[activeVariant]);
+    console.log(allProductVariants[activeVariant].description);
+  }
+
   function updateIndex(newIndex) {
     if (newIndex < 0) {
       newIndex = allProductVariants[activeVariant].images.length - 1;
