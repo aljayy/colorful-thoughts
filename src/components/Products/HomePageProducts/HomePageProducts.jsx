@@ -25,6 +25,8 @@ function HomePageProducts({ products }) {
                       image={product.productImage}
                       name={product.productName}
                       price={product.productPrice}
+                      key={product.productId}
+                      id={product.productId}
                     />
                   );
                 })}
