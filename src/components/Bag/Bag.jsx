@@ -4,12 +4,16 @@ import trash from "../../images/trash.svg";
 import arrow from "../../images/accordianarrow.svg";
 import bubble from "../../images/bubble.svg";
 import bubble2 from "../../images/bubble2.svg";
+import orangebubble from "../../images/orangebubble.svg";
+import orangebubble2 from "../../images/orangebubble2.svg";
 import { commerce } from "../../lib/commerce";
 function Bag() {
   const [cartProducts, setCartProducts] = useState([]);
+  const [initialLoading, setInitialLoading] = useState(false);
 
   let total = 0;
   useEffect(async function getCart() {
+    setInitialLoading(true);
     let products;
     const response = await commerce.cart.contents();
 
@@ -30,6 +34,8 @@ function Bag() {
     for (let i = 0; i < products.length; i++) {
       total += Number(products[i].price);
     }
+
+    setInitialLoading(false);
   }, []);
 
   async function deleteItem(productId) {
@@ -48,17 +54,18 @@ function Bag() {
 
   return (
     <section className={styles.section}>
-      {cartProducts.length === 0 && (
-        <div className={styles["empty-wrapper"]}>
+      {initialLoading && <div className={styles.loader}></div>}
+      {cartProducts.length === 0 && !initialLoading && (
+        <>
           <h2 className={styles["empty-message"]}>
             It’s looking pretty gray and empty in here. Add some items and let’s
             add some color.
           </h2>
           <img src={bubble} className={styles.bubble} />
           <img src={bubble2} className={styles.bubble2} />
-        </div>
+        </>
       )}
-      {cartProducts.length > 0 && (
+      {cartProducts.length > 0 && !initialLoading && (
         <>
           {cartProducts.map((product) => {
             return (
@@ -100,6 +107,8 @@ function Bag() {
               </div>
             );
           })}
+          <img src={orangebubble} className={styles.bubble} />
+          <img src={orangebubble2} className={styles.bubble2} />
           <h3>Subtotal: $620</h3>
           <button className={styles.checkout}>Checkout</button>
         </>
