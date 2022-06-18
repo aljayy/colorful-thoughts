@@ -148,31 +148,6 @@ function IndividualProduct() {
               <p className={styles.productprice}>{productDetails[2].price}</p>
             </div>
             <div className={styles.section}>
-              <h2>Size</h2>
-              <div className={styles.sizelayout}>
-                {productDetails[3].sizes.map((size, index) => {
-                  if (index === selectedSize) {
-                    return (
-                      <div
-                        className={styles.sizebox}
-                        onClick={() => setSize(index)}
-                      >
-                        <p>{size.name}</p>
-                      </div>
-                    );
-                  }
-                  return (
-                    <div
-                      className={`${styles.sizebox} ${styles.nonselected}`}
-                      onClick={() => setSize(index)}
-                    >
-                      <p>{size.name}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.section}>
               <h2>Colorway</h2>
               <div className={styles.colorway}>
                 {productDetails[4].colorway.map((color, index) => {
@@ -192,6 +167,31 @@ function IndividualProduct() {
                       onClick={() => setColor(index)}
                     >
                       <p>{color.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles.section}>
+              <h2>Size</h2>
+              <div className={styles.sizelayout}>
+                {productDetails[3].sizes.map((size, index) => {
+                  if (index === selectedSize) {
+                    return (
+                      <div
+                        className={styles.sizebox}
+                        onClick={() => setSize(index)}
+                      >
+                        <p>{size.name}</p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div
+                      className={`${styles.sizebox} ${styles.nonselected}`}
+                      onClick={() => setSize(index)}
+                    >
+                      <p>{size.name}</p>
                     </div>
                   );
                 })}

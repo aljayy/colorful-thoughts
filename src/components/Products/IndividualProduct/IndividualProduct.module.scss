@@ -17,6 +17,7 @@
       object-fit: contain;
       width: 100%;
       border-bottom: 1px solid #c0c0c0;
+      background-color: #f0f0f0;
     }
   }
 
@@ -40,12 +41,12 @@
 
       .sizelayout {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
 
         .sizebox {
           border: 1px solid black;
           height: 4.5rem;
-          width: 4.5rem;
+          width: 10rem;
           margin-top: 2rem;
           margin-right: 2rem;
           display: flex;
@@ -66,7 +67,7 @@
 
         .colorbox {
           border: 1px solid black;
-          width: 12rem;
+          width: 16rem;
           height: 4rem;
           display: flex;
           justify-content: center;
@@ -234,7 +235,7 @@
       margin: 0 0 0 2.5rem;
       transition: max-height 0.4s linear;
       height: auto;
-      max-height: 40rem;
+      max-height: 60rem;
       overflow: hidden;
 
       p {
