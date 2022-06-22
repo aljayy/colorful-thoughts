@@ -10,6 +10,7 @@ import { commerce } from "../../lib/commerce";
 function Bag() {
   const [cartProducts, setCartProducts] = useState([]);
   const [initialLoading, setInitialLoading] = useState(false);
+  const [productTotals, setProductTotals] = useState(0);
 
   let total = 0;
   useEffect(async function getCart() {
@@ -17,6 +18,7 @@ function Bag() {
     let products;
     const response = await commerce.cart.contents();
 
+    console.log(response);
     products = response.map((product) => {
       return {
         image: product.image.url,
@@ -24,7 +26,10 @@ function Bag() {
         quantity: product.quantity,
         size: product.selected_options[0].option_name,
         color: product.selected_options[1].option_name,
-        price: product.line_total.formatted_with_symbol,
+        price: {
+          raw: product.line_total.raw,
+          formatted: product.line_total.formatted_with_symbol,
+        },
         id: product.id,
       };
     });
@@ -32,9 +37,10 @@ function Bag() {
     setCartProducts(products);
 
     for (let i = 0; i < products.length; i++) {
-      total += Number(products[i].price);
+      total += products[i].price.raw;
     }
 
+    setProductTotals(total);
     setInitialLoading(false);
   }, []);
 
@@ -102,14 +108,14 @@ function Bag() {
                     <p>Color: </p>
                     <div>{product.color}</div>
                   </div>
-                  <p className={styles.price}>{product.price}</p>
+                  <p className={styles.price}>{product.price.formatted}</p>
                 </div>
               </div>
             );
           })}
           <img src={orangebubble} className={styles.bubble} />
           <img src={orangebubble2} className={styles.bubble2} />
-          <h3>Subtotal: $620</h3>
+          <h3>Subtotal: ${productTotals}</h3>
           <button className={styles.checkout}>Checkout</button>
         </>
       )}
