@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero";
-import HomePageProducts from "./components/Products/HomePageProducts/HomePageProducts";
-import styles from "./App.module.scss";
 import { commerce } from "./lib/commerce";
+import styles from "./App.module.scss";
+import Navbar from "./components/Navbar/Navbar";
+import RoutesProvider from "./components/Routes/RoutesProvider";
 import Footer from "./components/Footer/Footer";
-import DesignerCategory from "./components/DesignerCategory/DesignerCategory";
-import About from "./components/About/About";
-import LoginForm from "./components/Account/LoginForm";
-import SignUpForm from "./components/Account/SignUpForm";
-import UserDashboard from "./components/Account/UserDashboard";
-import IndividialProduct from "./components/Products/IndividualProduct/IndividualProduct";
 
 function App() {
   const [homeProducts, setHomeProducts] = useState([]);
@@ -61,21 +53,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route
-          path="/home"
-          element={[
-            <Hero />,
-            <HomePageProducts products={homeProducts} loading={loading} />,
-          ]}
-        />
-        <Route path="/designers/:categorySlug" element={<DesignerCategory />} />
-        <Route path="/product/:productId" element={<IndividialProduct />} />
-        <Route path="/about/" element={<About />} />
-        <Route path="/login/" element={<LoginForm />} />
-        <Route path="/signup/" element={<SignUpForm />} />
-        <Route path="/dashboard/" element={<UserDashboard />} />
-      </Routes>
+      <RoutesProvider loading={loading} homeProducts={homeProducts} />
       <Footer />
     </div>
   );
