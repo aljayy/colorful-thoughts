@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-
-@font-face {
-  font-family: Coolvetica;
-  src: url("./fonts/coolveticarg.ttf");
-}
+@import "./variables.module";
+// @font-face {
+//   font-family: Coolvetica;
+//   src: url("./Assets/Fonts/coolveticarg.ttf");
+// }
 
 * {
   box-sizing: border-box;
@@ -13,5 +12,5 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Coolvetica";
+  font-family: $primary-text;
 }
