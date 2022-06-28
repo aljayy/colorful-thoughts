@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { commerce } from "../../../lib/commerce";
+import { commerce } from "../../../Auth/commerce";
 import { useSwipeable } from "react-swipeable";
 import styles from "./IndividualProduct.module.scss";
-import arrow from "../../../images/accordianarrow.svg";
-import SkeletonIndividualProducts from "../../SkeletonLoading/SkeletonIndividualProducts";
+import arrow from "../../../Assets/Images/accordianarrow.svg";
+import SkeletonIndividualProducts from "../../Loaders/SkeletonLoader/SkeletonIndividualProducts";
 
 function IndividualProduct() {
   const [productDetails, setProductDetails] = useState([]);

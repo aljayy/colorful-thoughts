@@ -1,3 +1,5 @@
+@import "../../../variables.module";
+
 .wrapper {
   margin-top: 6.5rem;
   min-height: 100vh;
@@ -16,27 +18,32 @@
       height: 100%;
       object-fit: contain;
       width: 100%;
-      border-bottom: 1px solid #c0c0c0;
+      border-bottom: 1px solid $gray;
       background-color: #f0f0f0;
     }
   }
 
   .productdetailscontainer {
     margin: 0 3rem;
-    font-family: "Libre Baskerville", sans-serif;
+    font-family: $primary-text;
 
     .section {
-      border-bottom: 1px solid #c0c0c0;
+      border-bottom: 1px solid $gray;
       padding: 2rem 0;
 
       .producttitle {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
         margin-bottom: 1.5rem;
       }
 
       .productprice {
         font-size: 1.6rem;
-        font-weight: bold;
+        // font-weight: bold;
+        font-family: $secondary-text;
+      }
+
+      h2 {
+        font-size: 2rem;
       }
 
       .sizelayout {
@@ -54,7 +61,8 @@
           justify-content: center;
 
           p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            font-family: $secondary-text;
           }
         }
       }
@@ -74,8 +82,9 @@
           align-items: center;
 
           p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             text-align: center;
+            font-family: $secondary-text;
           }
         }
       }
@@ -88,20 +97,17 @@
     display: flex;
 
     .addtobag {
-      background-color: #ff6700;
+      background-color: $orange;
       border: none;
       height: 6rem;
       position: relative;
       width: 60%;
 
-      &:active {
-        background-color: #c75000;
-      }
-
       span {
         color: white;
-        font-family: "Coolvetica", sans-serif;
-        font-size: 1.8rem;
+        font-family: $primary-text;
+        font-weight: bold;
+        font-size: 2.2rem;
       }
     }
 
@@ -168,10 +174,10 @@
           height: 0;
           border-left: 12px solid transparent;
           border-right: 12px solid transparent;
-          border-bottom: 12px solid #ff6700;
+          border-bottom: 12px solid $orange;
 
           &:active {
-            border-bottom-color: #c75000;
+            border-bottom-color: $dark-orange;
           }
         }
 
@@ -180,10 +186,10 @@
           height: 0;
           border-left: 12px solid transparent;
           border-right: 12px solid transparent;
-          border-top: 12px solid #ff6700;
+          border-top: 12px solid $orange;
 
           &:active {
-            border-top-color: #c75000;
+            border-top-color: $dark-orange;
           }
         }
       }
@@ -192,10 +198,10 @@
 }
 
 .nonselected {
-  border: 1px solid #7777 !important;
+  border: 1px solid $gray !important;
 
   p {
-    color: #777;
+    color: $gray;
   }
 }
 
@@ -212,7 +218,7 @@
   margin: 6rem 3rem 2rem 3rem;
 
   .accordiancard {
-    border-bottom: 1px solid #c0c0c0;
+    border-bottom: 1px solid $gray;
     padding-bottom: 1rem;
 
     .accordianquestion {
@@ -225,13 +231,13 @@
       }
 
       p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         margin-left: 0.5rem;
+        font-family: $primary-text;
       }
     }
 
     .answer {
-      font-family: "Libre Baskerville", sans-serif;
       margin: 0 0 0 2.5rem;
       transition: max-height 0.4s linear;
       height: auto;
@@ -239,6 +245,8 @@
       overflow: hidden;
 
       p {
+        font-family: $secondary-text;
+        font-size: 1.2rem;
         margin-bottom: 1rem;
         margin-top: 1rem;
       }
