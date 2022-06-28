@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+// Font Variables
+$primary-text: "Philosopher", sans-serif;
+$secondary-text: "Libre Baskerville", sans-serif;
+
+// Color Variables
+$orange: #ff6700;
+$dark-orange: #c75000;
+$light-gray: #f0f0f0;
+$gray: #c0c0c0;
+
+:export {
+  orange: $orange;
+  dark-orange: $dark-orange;
+  primary-text: $primary-text;
+  secondary-text: $secondary-text;
+}
