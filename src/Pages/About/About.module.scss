@@ -22,7 +22,8 @@
   }
 
   p {
-    font-family: "Libre Baskerville", sans-serif;
+    font-family: $secondary-text;
+    font-size: 1.4rem;
     margin-top: 2rem;
     padding: 0 3rem;
     text-align: center;
@@ -33,6 +34,6 @@
   }
 
   :last-child {
-    margin-bottom: 2rem;
+    margin-bottom: 6rem;
   }
 }
