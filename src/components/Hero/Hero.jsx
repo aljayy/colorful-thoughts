@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Hero.module.scss";
-import heroimg from "../images/smgaiaplatforms.jpg";
+import heroimg from "../Assets/Images/smgaiaplatforms.jpg";
 
 function Hero() {
   return (
@@ -20,8 +20,7 @@ function Hero() {
           color palette.
           <br />
           <br />
-          100% organic cotton
-          <i> for our</i> planet.
+          100% organic cotton for <i>our</i> planet.
         </p>
         <button>Shop</button>
       </div>
