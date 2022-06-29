@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SkeletonCategoryProducts from "../../SkeletonLoading/SkeletonCategoryProducts";
+import SkeletonCategoryProducts from "../../Loaders/SkeletonLoader/SkeletonCategoryProducts";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./HomePageProducts.module.scss";
 

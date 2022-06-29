@@ -1,6 +1,8 @@
+@import "../../../variables.module";
+
 .category-hero-container {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
   height: 10rem;
   width: 100%;
 
@@ -15,19 +17,19 @@
   display: grid;
   column-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 22rem);
+  grid-template-rows: repeat(3, 1fr);
   margin: 2rem 3rem;
   row-gap: 1rem;
 }
 
 .view {
-  background-color: #ff6700;
+  background-color: $orange;
   border: none;
-  color: white;
+  color: $white;
   display: block;
-  font-size: 2rem;
-  font-family: "Coolvetica";
+  font-size: 2.4rem;
+  font-family: $primary-text;
   height: 4rem;
   margin: 0 auto 2rem auto;
-  width: 12rem;
+  width: 14rem;
 }
