@@ -1,9 +1,12 @@
+@import "../../../variables.module";
+
 .container {
-  border: 1px #eeee solid;
+  border: 1px $light-gray solid;
 
   .imgcontainer {
     height: 16rem;
     width: 100%;
+    background-color: $light-gray;
 
     img {
       height: 100%;
@@ -13,18 +16,21 @@
   }
 
   .productdetails {
-    border-top: 1px solid #c0c0c0;
+    border-top: 1px solid $gray;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-family: "Libre Baskerville";
-    height: 6rem;
+    font-family: $primary-text;
+    font-weight: bold;
+    font-size: 1.4rem;
+    height: 8rem;
     padding: 0.5rem 1rem;
 
     .productprice {
       align-self: flex-end;
       font-size: 1.4rem;
-      font-weight: bold;
+      font-family: $secondary-text;
+      font-weight: lighter;
     }
   }
 }
