@@ -1,0 +1,116 @@
+@import "../../variables.module.scss";
+
+.wrapper {
+  margin-top: 13rem;
+  height: 100vh;
+
+  form {
+    border: 2px solid black;
+    margin: 0 3rem;
+
+    .registration {
+      display: flex;
+
+      .registration__buttons {
+        background-color: white;
+        border: none;
+        font-family: $primary-text;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding: 1rem 0;
+        width: 50%;
+        text-align: center;
+      }
+      .registration__login {
+        border-bottom: 2px solid $black;
+        color: $black;
+      }
+
+      .registration__signup {
+        border-bottom: 2px solid $gray;
+        color: $gray;
+      }
+    }
+
+    .input {
+      padding: 3rem 2rem;
+
+      .input__email,
+      .input__password {
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        input {
+          border: 1px solid $black;
+          border-radius: 0;
+          background-color: $light-gray;
+          height: 4rem;
+          font-family: $secondary-text;
+          font-size: 1.6rem;
+          padding-left: 1rem;
+          width: 100%;
+        }
+
+        input:focus {
+          outline: none;
+          caret-color: $orange;
+        }
+      }
+      .input__password {
+        margin-top: 3rem;
+        .input__password--view {
+          display: flex;
+          border: 1px solid $black;
+
+          input {
+            border: none;
+          }
+
+          button {
+            border: none;
+            background-color: $light-gray;
+            padding-right: 1rem;
+          }
+        }
+      }
+    }
+
+    p {
+      font-family: $secondary-text;
+    }
+
+    .reset {
+      color: $dark-gray;
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+      text-decoration: underline;
+    }
+
+    .fail {
+      color: $black;
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: none;
+      margin-top: 1.5rem;
+    }
+
+    .login {
+      background-color: $orange;
+      border: none;
+      color: white;
+      font-family: $primary-text;
+      font-weight: 700;
+      font-size: 2.6rem;
+      margin-top: 2rem;
+      padding: 1rem 0;
+      width: 100%;
+    }
+  }
+}
+
+.display {
+  display: block !important;
+}
