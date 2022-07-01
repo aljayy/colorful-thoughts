@@ -1,0 +1,145 @@
+@import "../../variables.module";
+
+.wrapper {
+  margin-top: 13rem;
+  height: 100vh;
+
+  form {
+    border: 2px solid black;
+    font-family: $primary-text;
+    margin: 0 3rem;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .registration {
+      display: flex;
+
+      .registration__buttons {
+        background-color: white;
+        border: none;
+        font-family: $primary-text;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding: 1rem 0;
+        width: 50%;
+        text-align: center;
+      }
+      .registration__signup {
+        border-bottom: 2px solid $black;
+        color: $black;
+      }
+
+      .registration__login {
+        color: $gray;
+        border: none;
+        border-bottom: 2px solid $gray;
+      }
+    }
+
+    .input {
+      padding: 3rem 2rem;
+
+      input {
+        background-color: $light-gray;
+        border: 1px solid $black;
+        border-radius: 0;
+        height: 4rem;
+        font-family: $secondary-text;
+        font-size: 1.6rem;
+        padding-left: 1rem;
+        width: 100%;
+      }
+
+      input:focus {
+        outline: none;
+        caret-color: $orange;
+      }
+
+      .input__password {
+        display: flex;
+        border: 1px solid black;
+        // Allowing this property doesn't fill the whole eye box with the light gray color.
+        // align-items: center;
+
+        input {
+          border: none;
+        }
+
+        button {
+          border: none;
+          background-color: $light-gray;
+          padding-right: 1rem;
+        }
+      }
+
+      h3 {
+        font-family: $secondary-text;
+        margin-top: 1.5rem;
+        font-size: 1.4rem;
+      }
+
+      .requirements {
+        display: flex;
+        margin-top: 1rem;
+
+        img {
+          width: 1.2rem;
+        }
+
+        p {
+          color: $dark-gray;
+          font-family: $secondary-text;
+          font-size: 1.2rem;
+          margin-left: 1rem;
+        }
+
+        .valid {
+          color: $black;
+        }
+      }
+
+      .submit {
+        background-color: $orange;
+        border: none;
+        color: white;
+        font-family: $primary-text;
+        font-weight: bold;
+        font-size: 2.6rem;
+        margin-top: 2rem;
+        padding: 1rem 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.titles {
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.no-errors {
+  p {
+    display: none;
+  }
+}
+
+.errors {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  p {
+    // color: #880d1e;
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.error-input {
+  // border: #880d1e 1px solid !important;
+  border: $black 1px solid !important;
+}
