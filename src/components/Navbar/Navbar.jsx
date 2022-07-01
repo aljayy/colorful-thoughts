@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 // Image Imports
-import logo from "../../images/mobilelogo.svg";
-import search from "../../images/searchicon.svg";
+import logo from "../../Assets/Images/mobilelogo.svg";
+import search from "../../Assets/Images/searchicon.svg";
 
 // Style Import
 import styles from "./Navbar.module.scss";

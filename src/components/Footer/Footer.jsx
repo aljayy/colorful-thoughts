@@ -4,10 +4,10 @@ import React from "react";
 import styles from "./Footer.module.scss";
 
 // Image Imports
-import footerlogo from "../../images/footerlogo.svg";
-import instagram from "../../images/instasocial.svg";
-import twitter from "../../images/twittersocial.svg";
-import tiktok from "../../images/tiktoksocial.svg";
+import footerlogo from "../../Assets/Images/footerlogo.svg";
+import instagram from "../../Assets/Images/instasocial.svg";
+import twitter from "../../Assets/Images/twittersocial.svg";
+import tiktok from "../../Assets/Images/tiktoksocial.svg";
 
 function Footer() {
   function preventReload(e) {

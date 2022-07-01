@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Hero.module.scss";
-import heroimg from "../Assets/Images/smgaiaplatforms.jpg";
+import heroimg from "../../Assets/Images/smgaiaplatforms.jpg";
 
 function Hero() {
   return (
