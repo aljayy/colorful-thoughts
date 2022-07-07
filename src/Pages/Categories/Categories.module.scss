@@ -1,5 +1,9 @@
 @import "../../variables.module";
 
+.category {
+  margin: 6.5rem 3rem 0 3rem;
+  min-height: 100vh;
+}
 .category-h2 {
   font-family: $primary-text;
   font-size: 3.4rem;
@@ -9,6 +13,7 @@
 }
 
 .category-h3 {
+  color: black;
   font-family: $secondary-text;
   font-size: 2.4rem;
   font-weight: 400;
