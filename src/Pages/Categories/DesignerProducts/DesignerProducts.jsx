@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { commerce } from "../../Auth/commerce";
+import { commerce } from "../../../Auth/commerce";
 import { useParams } from "react-router-dom";
-import styles from "./DesignerCategory.module.scss";
-import SkeletonCategoryProducts from "../../Components/Loaders/SkeletonLoader/SkeletonCategoryProducts";
-import ProductCard from "../../Components/Products/ProductCard/ProductCard";
+import styles from "./DesignerProducts.module.scss";
+import SkeletonCategoryProducts from "../../../Components/Loaders/SkeletonLoader/SkeletonCategoryProducts";
+import ProductCard from "../../../Components/Products/ProductCard/ProductCard";
 
-function DesignerCategory() {
+function DesignerProducts() {
   const [categoryProducts, setCategoryProducts] = useState([]);
   const params = useParams();
 
@@ -48,7 +48,7 @@ function DesignerCategory() {
       {categoryProducts.length === 0 && <SkeletonCategoryProducts />}
       {categoryProducts.length > 0 && (
         <div className={styles["hero-container"]}>
-          <img src={categoryProducts[0]} />
+          <img src={categoryProducts[0]} alt="Company Logo" />
         </div>
       )}
       {categoryProducts.length > 0 && (
@@ -69,4 +69,4 @@ function DesignerCategory() {
   );
 }
 
-export default DesignerCategory;
+export default DesignerProducts;
