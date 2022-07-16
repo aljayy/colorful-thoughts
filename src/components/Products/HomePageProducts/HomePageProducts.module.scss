@@ -1,27 +1,5 @@
 @import "../../../variables.module";
 
-.category-hero-container {
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
-  height: 10rem;
-  width: 100%;
-
-  .category-hero {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.category-container {
-  display: grid;
-  column-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  margin: 2rem 3rem;
-  row-gap: 1rem;
-}
-
 .view {
   background-color: $orange;
   border: none;
