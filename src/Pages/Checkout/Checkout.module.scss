@@ -1,0 +1,36 @@
+@import "../../variables.module";
+
+.checkout {
+  margin-top: 8.5rem;
+  padding: 0 3rem;
+  .checkout__status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 2rem;
+
+    span {
+      border: $black 1px solid;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      z-index: -1;
+    }
+
+    div {
+      border: $black 1px solid;
+      background-color: $white;
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .checkout__status--complete {
+      color: $white;
+      background-color: $black;
+    }
+  }
+}
