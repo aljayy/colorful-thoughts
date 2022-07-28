@@ -11,6 +11,7 @@ import Categories from "./Categories/Categories";
 import IndividualProduct from "../Components/Products/IndividualProduct/IndividualProduct";
 import CategoryProducts from "./Categories/CategoryProducts/CategoryProducts";
 import DesignerProducts from "./Categories/DesignerProducts/DesignerProducts";
+import Checkout from "./Checkout/Checkout";
 
 function RoutesProvider() {
   return (
@@ -20,6 +21,7 @@ function RoutesProvider() {
       <Route path="/about/" element={<About />} />
       <Route path="/categories/" element={<Categories />} />
       <Route path="/categories/:categorySlug" element={<CategoryProducts />} />
+      <Route path="/checkout/:cartID" element={<Checkout />} />
       <Route path="/dashboard/" element={<UserDashboard />} />
       <Route path="/designers" element={<Categories />} />
       <Route path="/designers/:categorySlug" element={<DesignerProducts />} />
